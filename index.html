@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LensFlow — Câmera Adaptativa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+  <nav>
+    <a href="#" class="nav-logo">LensFlow<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#camera">Câmera</a></li>
+      <li><a href="#modos">Modos</a></li>
+      <li><a href="#specs">Especificações</a></li>
+    </ul>
+  </nav>
+ 
+
+  <section class="hero">
+    <div class="hero-tag">LensFlow — Câmera Adaptativa para a Rotina dos Jovens</div>
+    <h1>A câmera que <em>pensa</em><br>por você</h1>
+    <p>Inteligência artificial integrada em cada modo. Captura o momento certo antes mesmo de você apertar o botão.</p>
+    <div class="hero-actions">
+      <a href="#modos" class="btn-ghost">Ver modos da câmera</a>
+    </div>
+ 
+    <div class="phone-hero">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-btn-right"></div>
+        <div class="phone-btn-left-1"></div>
+        <div class="phone-btn-left-2"></div>
+
+        <img
+          src="img/auto.png"
+          alt="Tela do modo automático da câmera LENZ"
+          class="phone-screen"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        />
+        <div class="img-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+          <span>Coloque img/auto.png</span>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!--MODOS DA CÂMERA-->
+  <section id="modos">
+    <div class="section-tag">✦ Sistema de Câmera</div>
+    <h2 class="section-title">Seis modos.<br>Uma câmera.</h2>
+    <p class="section-sub">Cada modo foi projetado para uma situação real. A IA detecta o contexto e ajusta tudo automaticamente.</p>
+ 
+    <div class="modes-grid">
+ 
+      <!-- MODO AUTO -->
+      <div class="mode-row">
+        <div class="mode-phone">
+          <div class="mode-phone-frame">
+            <img src="img/auto.png" alt="Modo Automático"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>img/auto.png</span>
+            </div>
+          </div>
+          <div class="mode-badge badge--auto">✦ Auto</div>
+        </div>
+        <div class="mode-info">
+          <p class="mode-number">01 — Modo</p>
+          <h3 class="mode-name name--auto">Automático</h3>
+          <p class="mode-desc">A IA analisa a cena em tempo real e aplica as configurações ideais. Detecta paisagens, rostos e iluminação e notifica quando muda de modo.</p>
+          <div class="mode-chips">
+            <span class="chip">Detecção de cena</span>
+            <span class="chip">Ajuste automático</span>
+            <span class="chip">HDR inteligente</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- MODO ESTUDO -->
+      <div class="mode-row reverse">
+        <div class="mode-phone">
+          <div class="mode-phone-frame">
+            <img src="img/estudo.png" alt="Modo Estudo"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>img/estudo.png</span>
+            </div>
+          </div>
+          <div class="mode-badge badge--estudo">📄 Estudo</div>
+        </div>
+        <div class="mode-info">
+          <p class="mode-number">02 — Modo</p>
+          <h3 class="mode-name name--estudo">Estudo</h3>
+          <p class="mode-desc">Digitaliza documentos, livros e quadros com nitidez máxima. Inicia sessões de estudo com uma captura e organiza automaticamente seus materiais.</p>
+          <div class="mode-chips">
+            <span class="chip">Scanner de documentos</span>
+            <span class="chip">Sessão de estudo</span>
+            <span class="chip">Correção de perspectiva</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- MODO PET -->
+      <div class="mode-row">
+        <div class="mode-phone">
+          <div class="mode-phone-frame">
+            <img src="img/pet.png" alt="Modo Pet"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>img/pet.png</span>
+            </div>
+          </div>
+          <div class="mode-badge badge--pet">🐾 Pet</div>
+        </div>
+        <div class="mode-info">
+          <p class="mode-number">03 — Modo</p>
+          <h3 class="mode-name name--pet">Pet</h3>
+          <p class="mode-desc">Emite som e luz para chamar a atenção do seu animal e dispara automaticamente no melhor momento. Foco contínuo que acompanha cada movimento.</p>
+          <div class="mode-chips">
+            <span class="chip">Disparo automático</span>
+            <span class="chip">Foco contínuo</span>
+            <span class="chip">Estímulo sonoro</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- MODO RETRATO -->
+      <div class="mode-row reverse">
+        <div class="mode-phone">
+          <div class="mode-phone-frame">
+            <img src="img/retrato.png" alt="Modo Retrato"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>img/retrato.png</span>
+            </div>
+          </div>
+          <div class="mode-badge badge--retrato">👤 Retrato</div>
+        </div>
+        <div class="mode-info">
+          <p class="mode-number">04 — Modo</p>
+          <h3 class="mode-name name--retrato">Retrato</h3>
+          <p class="mode-desc">Desfoque de fundo com processamento neural. Separa o sujeito do fundo com precisão cirúrgica, criando fotos com profundidade de câmera profissional.</p>
+          <div class="mode-chips">
+            <span class="chip">Bokeh neural</span>
+            <span class="chip">Detecção de rosto</span>
+            <span class="chip">Iluminação de estúdio</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- MODO PAISAGEM -->
+      <div class="mode-row">
+        <div class="mode-phone">
+          <div class="mode-phone-frame">
+            <img src="img/paisagem.png" alt="Modo Paisagem"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>img/paisagem.png</span>
+            </div>
+          </div>
+          <div class="mode-badge badge--paisagem">🏔 Paisagem</div>
+        </div>
+        <div class="mode-info">
+          <p class="mode-number">05 — Modo</p>
+          <h3 class="mode-name name--paisagem">Paisagem</h3>
+          <p class="mode-desc">Saturação e nitidez otimizadas para capturar a amplitude do horizonte. Cores vibrantes e detalhes preservados do primeiro plano ao infinito.</p>
+          <div class="mode-chips">
+            <span class="chip">Cores vibrantes</span>
+            <span class="chip">Foco ao infinito</span>
+            <span class="chip">Wide ultra nativo</span>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- MODO MANUAL -->
+      <div class="mode-row reverse">
+        <div class="mode-phone">
+          <div class="mode-phone-frame">
+            <img src="img/manual.png" alt="Modo Manual"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+            <div class="img-placeholder" style="display:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              <span>img/manual.png</span>
+            </div>
+          </div>
+          <div class="mode-badge badge--manual">⊞ Manual</div>
+        </div>
+        <div class="mode-info">
+          <p class="mode-number">06 — Modo</p>
+          <h3 class="mode-name name--manual">Manual</h3>
+          <p class="mode-desc">Controle total sobre ISO, exposição, balanço de branco, saturação, contraste e nitidez. Para fotógrafos que sabem exatamente o que querem.</p>
+          <div class="mode-chips">
+            <span class="chip">ISO 100–3200</span>
+            <span class="chip">Exposição ±2</span>
+            <span class="chip">Balanço de branco</span>
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  
+  <section class="specs-section" id="specs">
+    <div class="specs-grid">
+      <div class="spec-item">
+        <span class="spec-value">200</span>
+        <span class="spec-label">Megapixels sensor principal</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-value">6</span>
+        <span class="spec-label">Modos de câmera inteligentes</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-value">4K</span>
+        <span class="spec-label">Gravação de vídeo 120fps</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-value">8×</span>
+        <span class="spec-label">Zoom óptico sem perda</span>
+      </div>
+      <div class="spec-item">
+        <span class="spec-value">f/1.4</span>
+        <span class="spec-label">Abertura máxima da lente</span>
+      </div>
+    </div>
+  </section>
+ 
+
+  <section class="cta-section" id="comprar">
+    <h2>Pronto para ver o mundo<br>de outro <em>ângulo?</em></h2>
+    <p>LensFlow. Disponível a partir de hoje.</p>
+  </section>
+ 
+  <!--  FOOTER -->
+  <footer>
+    <div class="logo">LensFlow<span>.</span></div>
+    <p>© 2026 LensFlow — Câmera Adaptativa. Todos os direitos reservados.</p>
+    <nav>
+      <a href="#">Privacidade</a>
+      <a href="#">Termos</a>
+      <a href="#">Suporte</a>
+    </nav>
+  </footer>
+ 
+</body>
+</html>
