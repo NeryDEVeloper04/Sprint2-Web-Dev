@@ -35,3 +35,94 @@ window.addEventListener("load", function () {
     }
   }
 });
+
+// 3. VALIDAÇÃO DE LOGIN / CADASTRO
+
+function getUsers() {
+  return JSON.parse(localStorage.getItem("lensflow_users") || "[]");
+}
+
+function saveUser(user) {
+  const users = getUsers();
+  users.push(user);
+  localStorage.setItem("lensflow_users", JSON.stringify(users));
+}
+
+function cadastrar(nome, email, senha, confirma) {
+  if (!nome || nome.trim().length < 3) {
+    alert("Nome deve ter ao menos 3 caracteres.");
+    return false;
+  }
+  if (!email || !email.includes("@") || !email.includes(".")) {
+    alert("E-mail inválido.");
+    return false;
+  }
+  if (!senha || senha.length < 8) {
+    alert("Senha deve ter ao menos 8 caracteres.");
+    return false;
+  }
+  if (senha !== confirma) {
+    alert("As senhas não coincidem.");
+    return false;
+  }
+  const users = getUsers();
+  if (users.find(u => u.email === email)) {
+    alert("Este e-mail já está cadastrado.");
+    return false;
+  }
+  saveUser({ nome: nome.trim(), email: email.trim(), senha });
+  alert("Conta criada com sucesso! Bem-vindo, " + nome.trim() + "!");
+  return true;
+}
+
+function login(email, senha) {
+  if (!email || !senha) {
+    alert("Preencha e-mail e senha.");
+    return false;
+  }
+  const users = getUsers();
+  const user = users.find(u => u.email === email && u.senha === senha);
+  if (!user) {
+    alert("E-mail ou senha incorretos.");
+    return false;
+  }
+  sessionStorage.setItem("lensflow_session", JSON.stringify(user));
+  alert("Bem-vindo de volta, " + user.nome + "! 📸");
+  return true;
+}
+
+const btnLogin = document.getElementById("btn-login");
+if (btnLogin) {
+  btnLogin.addEventListener("click", function () {
+    const email = document.getElementById("login-email").value;
+    const senha = document.getElementById("login-password").value;
+    login(email, senha);
+  });
+}
+
+const btnRegister = document.getElementById("btn-register");
+if (btnRegister) {
+  btnRegister.addEventListener("click", function () {
+    const nome     = document.getElementById("reg-name").value;
+    const email    = document.getElementById("reg-email").value;
+    const senha    = document.getElementById("reg-password").value;
+    const confirma = document.getElementById("reg-confirm").value;
+    cadastrar(nome, email, senha, confirma);
+  });
+}
+
+
+
+// 4. BOTÃO VOLTAR AO TOPO
+
+const backToTop = document.getElementById("back-to-top");
+
+if (backToTop) {
+  window.addEventListener("scroll", function () {
+    backToTop.style.display = window.scrollY > 400 ? "block" : "none";
+  });
+
+  backToTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
