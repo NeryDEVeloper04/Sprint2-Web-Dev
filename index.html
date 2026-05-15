@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LensFlow — Câmera Adaptativa</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="./script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LensFlow — Câmera Adaptativa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+
+  <!-- NAVEGAÇÃO -->
   <nav>
     <a href="#" class="nav-logo">LensFlow<span>.</span></a>
     <ul class="nav-links">
@@ -17,27 +20,27 @@
       <li><a href="#specs">Especificações</a></li>
     </ul>
   </nav>
- 
 
-  <section class="hero">
+  <!-- HERO -->
+  <section class="hero" id="camera">
     <div class="hero-tag">LensFlow — Câmera Adaptativa para a Rotina dos Jovens</div>
     <h1>A câmera que <em>pensa</em><br>por você</h1>
     <p>Inteligência artificial integrada em cada modo. Captura o momento certo antes mesmo de você apertar o botão.</p>
     <div class="hero-actions">
       <a href="#modos" class="btn-ghost">Ver modos da câmera</a>
     </div>
- 
+
     <div class="phone-hero">
       <div class="phone-frame">
         <div class="phone-notch"></div>
         <div class="phone-btn-right"></div>
         <div class="phone-btn-left-1"></div>
         <div class="phone-btn-left-2"></div>
-
         <img
           src="img/auto.png"
-          alt="Tela do modo automático da câmera LENZ"
+          alt="Tela do modo automático da câmera LensFlow"
           class="phone-screen"
+          id="hero-slide"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
         <div class="img-placeholder" style="display:none;">
@@ -47,15 +50,15 @@
       </div>
     </div>
   </section>
- 
-  <!--MODOS DA CÂMERA-->
+
+  <!-- MODOS DA CÂMERA -->
   <section id="modos">
     <div class="section-tag">✦ Sistema de Câmera</div>
     <h2 class="section-title">Seis modos.<br>Uma câmera.</h2>
     <p class="section-sub">Cada modo foi projetado para uma situação real. A IA detecta o contexto e ajusta tudo automaticamente.</p>
- 
+
     <div class="modes-grid">
- 
+
       <!-- MODO AUTO -->
       <div class="mode-row">
         <div class="mode-phone">
@@ -80,7 +83,7 @@
           </div>
         </div>
       </div>
- 
+
       <!-- MODO ESTUDO -->
       <div class="mode-row reverse">
         <div class="mode-phone">
@@ -105,7 +108,7 @@
           </div>
         </div>
       </div>
- 
+
       <!-- MODO PET -->
       <div class="mode-row">
         <div class="mode-phone">
@@ -130,7 +133,7 @@
           </div>
         </div>
       </div>
- 
+
       <!-- MODO RETRATO -->
       <div class="mode-row reverse">
         <div class="mode-phone">
@@ -155,7 +158,7 @@
           </div>
         </div>
       </div>
- 
+
       <!-- MODO PAISAGEM -->
       <div class="mode-row">
         <div class="mode-phone">
@@ -180,7 +183,7 @@
           </div>
         </div>
       </div>
- 
+
       <!-- MODO MANUAL -->
       <div class="mode-row reverse">
         <div class="mode-phone">
@@ -205,11 +208,11 @@
           </div>
         </div>
       </div>
- 
+
     </div>
   </section>
- 
-  
+
+  <!-- ESPECIFICAÇÕES -->
   <section class="specs-section" id="specs">
     <div class="specs-grid">
       <div class="spec-item">
@@ -234,14 +237,14 @@
       </div>
     </div>
   </section>
- 
 
+  <!-- CTA -->
   <section class="cta-section" id="comprar">
     <h2>Pronto para ver o mundo<br>de outro <em>ângulo?</em></h2>
     <p>LensFlow. Disponível a partir de hoje.</p>
   </section>
- 
-  <!--  FOOTER -->
+
+  <!-- FOOTER -->
   <footer>
     <div class="logo">LensFlow<span>.</span></div>
     <p>© 2026 LensFlow — Câmera Adaptativa. Todos os direitos reservados.</p>
@@ -251,6 +254,8 @@
       <a href="#">Suporte</a>
     </nav>
   </footer>
- 
+
+  <script src="script.js"></script>
+
 </body>
-</html>
+</html>A
