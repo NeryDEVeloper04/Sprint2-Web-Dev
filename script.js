@@ -1,162 +1,151 @@
-// 1. SLIDESHOW — phone hero
+
+// 1. SLIDESHOW — troca a imagem do phone hero automaticamente
 
 const slides = [
-  { src: "img/auto.png",     label: "✦ Auto"      },
-  { src: "img/estudo.png",   label: "📄 Estudo"   },
-  { src: "img/pet.png",      label: "🐾 Pet"      },
-  { src: "img/retrato.png",  label: "👤 Retrato"  },
-  { src: "img/paisagem.png", label: "🏔 Paisagem" },
-  { src: "img/manual.png",   label: "⊞ Manual"    },
+  "img/auto.png",
+  "img/estudo.png",
+  "img/pet.png",
+  "img/retrato.png",
+  "img/paisagem.png",
+  "img/manual.png"
 ];
 
-let currentSlide = 0;
+let indiceAtual = 0;
 const phoneScreen = document.querySelector(".phone-screen");
 
-function goToSlide(index) {
-  currentSlide = (index + slides.length) % slides.length;
+function proximoSlide() {
+  indiceAtual = (indiceAtual + 1) % slides.length;
   if (phoneScreen) {
-    phoneScreen.src = slides[currentSlide].src;
+    phoneScreen.src = slides[indiceAtual];
   }
 }
 
-setInterval(() => goToSlide(currentSlide + 1), 3500);
-
+setInterval(proximoSlide, 3000);
 
 
 // 2. PROMPT DE BOAS-VINDAS
-
+//    Requisito: Alertas e prompts
 window.addEventListener("load", function () {
-  const visited = sessionStorage.getItem("lensflow_visited");
-  if (!visited) {
-    sessionStorage.setItem("lensflow_visited", "1");
-    const nome = prompt("Bem-vindo à LensFlow!\nQual é o seu nome?");
-    if (nome && nome.trim() !== "") {
-      alert("Olá, " + nome.trim() + "! 📸 Explore os modos da câmera abaixo.");
-    }
+  const nome = prompt("Bem-vindo à LensFlow! Qual é o seu nome?");
+  if (nome && nome.trim() !== "") {
+    alert("Olá, " + nome.trim() + "! Explore os modos da câmera abaixo.");
   }
 });
 
-// 3. VALIDAÇÃO DE LOGIN / CADASTRO
 
-function getUsers() {
-  return JSON.parse(localStorage.getItem("lensflow_users") || "[]");
-}
+// 3. FORMULÁRIO DE LOGIN — criado e inserido via JS no DOM
 
-function saveUser(user) {
-  const users = getUsers();
-  users.push(user);
-  localStorage.setItem("lensflow_users", JSON.stringify(users));
-}
 
-function cadastrar(nome, email, senha, confirma) {
-  if (!nome || nome.trim().length < 3) {
-    alert("Nome deve ter ao menos 3 caracteres.");
-    return false;
+// Cria o formulário dinamicamente
+const formulario = document.createElement("div");
+formulario.id = "form-login";
+formulario.innerHTML =
+  "<h3>Login</h3>" +
+  "<input type='text' id='campo-nome' placeholder='Seu nome' />" +
+  "<input type='email' id='campo-email' placeholder='Seu e-mail' />" +
+  "<input type='password' id='campo-senha' placeholder='Senha' />" +
+  "<button id='btn-entrar'>Entrar</button>" +
+  "<p id='msg-login'></p>";
+
+// Insere o formulário antes do footer
+const footer = document.querySelector("footer");
+document.body.insertBefore(formulario, footer);
+
+// Evento do botão de login
+document.getElementById("btn-entrar").addEventListener("click", function () {
+  const nome  = document.getElementById("campo-nome").value.trim();
+  const email = document.getElementById("campo-email").value.trim();
+  const senha = document.getElementById("campo-senha").value;
+  const msg   = document.getElementById("msg-login");
+
+  // Validações
+  if (nome === "") {
+    msg.textContent = "Por favor, informe seu nome.";
+    msg.style.color = "red";
+    return;
   }
-  if (!email || !email.includes("@") || !email.includes(".")) {
-    alert("E-mail inválido.");
-    return false;
+  if (email === "" || !email.includes("@")) {
+    msg.textContent = "Informe um e-mail válido.";
+    msg.style.color = "red";
+    return;
   }
-  if (!senha || senha.length < 8) {
-    alert("Senha deve ter ao menos 8 caracteres.");
-    return false;
+  if (senha.length < 6) {
+    msg.textContent = "A senha deve ter ao menos 6 caracteres.";
+    msg.style.color = "red";
+    return;
   }
-  if (senha !== confirma) {
-    alert("As senhas não coincidem.");
-    return false;
+
+  msg.textContent = "Login realizado com sucesso! Bem-vindo, " + nome + ".";
+  msg.style.color = "green";
+});
+
+
+// 4. BOTÃO — adiciona um botão "Voltar ao topo" via JS
+
+const btnTopo = document.createElement("button");
+btnTopo.textContent = "↑ Topo";
+btnTopo.id = "btn-topo";
+document.body.appendChild(btnTopo);
+
+// Mostra o botão só depois de rolar um pouco
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 300) {
+    btnTopo.style.display = "block";
+  } else {
+    btnTopo.style.display = "none";
   }
-  const users = getUsers();
-  if (users.find(u => u.email === email)) {
-    alert("Este e-mail já está cadastrado.");
-    return false;
-  }
-  saveUser({ nome: nome.trim(), email: email.trim(), senha });
-  alert("Conta criada com sucesso! Bem-vindo, " + nome.trim() + "!");
-  return true;
-}
+});
 
-function login(email, senha) {
-  if (!email || !senha) {
-    alert("Preencha e-mail e senha.");
-    return false;
-  }
-  const users = getUsers();
-  const user = users.find(u => u.email === email && u.senha === senha);
-  if (!user) {
-    alert("E-mail ou senha incorretos.");
-    return false;
-  }
-  sessionStorage.setItem("lensflow_session", JSON.stringify(user));
-  alert("Bem-vindo de volta, " + user.nome + "! 📸");
-  return true;
-}
+// Clique sobe a página
+btnTopo.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
-const btnLogin = document.getElementById("btn-login");
-if (btnLogin) {
-  btnLogin.addEventListener("click", function () {
-    const email = document.getElementById("login-email").value;
-    const senha = document.getElementById("login-password").value;
-    login(email, senha);
-  });
-}
+// Estilo básico do botão
+btnTopo.style.display    = "none";
+btnTopo.style.position   = "fixed";
+btnTopo.style.bottom     = "30px";
+btnTopo.style.right      = "30px";
+btnTopo.style.padding    = "10px 16px";
+btnTopo.style.background = "#a50000";
+btnTopo.style.color      = "#fff";
+btnTopo.style.border     = "none";
+btnTopo.style.borderRadius = "8px";
+btnTopo.style.cursor     = "pointer";
+btnTopo.style.fontSize   = "14px";
 
-const btnRegister = document.getElementById("btn-register");
-if (btnRegister) {
-  btnRegister.addEventListener("click", function () {
-    const nome     = document.getElementById("reg-name").value;
-    const email    = document.getElementById("reg-email").value;
-    const senha    = document.getElementById("reg-password").value;
-    const confirma = document.getElementById("reg-confirm").value;
-    cadastrar(nome, email, senha, confirma);
-  });
-}
-
-
-
-// 4. BOTÃO VOLTAR AO TOPO
-
-const backToTop = document.getElementById("back-to-top");
-
-if (backToTop) {
-  window.addEventListener("scroll", function () {
-    backToTop.style.display = window.scrollY > 400 ? "block" : "none";
-  });
-
-  backToTop.addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
 
 // 5. SMOOTH SCROLL nos links da nav
 
 document.querySelectorAll('a[href^="#"]').forEach(function (link) {
   link.addEventListener("click", function (e) {
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) {
+    const alvo = document.querySelector(this.getAttribute("href"));
+    if (alvo) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth" });
+      alvo.scrollIntoView({ behavior: "smooth" });
     }
   });
 });
 
-// 6. ANIMAÇÃO DE ENTRADA DAS SEÇÕES (scroll)
+
+// 6. ANIMAÇÃO DE ENTRADA DAS SEÇÕES ao rolar
 
 document.querySelectorAll(".mode-row, .spec-item").forEach(function (el) {
-  el.style.opacity = "0";
-  el.style.transform = "translateY(30px)";
-  el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+  el.style.opacity   = "0";
+  el.style.transform = "translateY(24px)";
+  el.style.transition = "opacity 0.5s ease, transform 0.5s ease";
 });
 
-const revealObserver = new IntersectionObserver(function (entries) {
+const observer = new IntersectionObserver(function (entries) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
+      entry.target.style.opacity   = "1";
       entry.target.style.transform = "translateY(0)";
-      revealObserver.unobserve(entry.target);
+      observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.15 });
 
 document.querySelectorAll(".mode-row, .spec-item").forEach(function (el) {
-  revealObserver.observe(el);
+  observer.observe(el);
 });
